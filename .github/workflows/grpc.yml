@@ -2,10 +2,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-grpc:
-    name: build grpc
+  build-grpc-windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - run: ./bootstrap-vcpkg.bat
       - run: ./vcpkg.exe install grpc
+
+  build-grpc-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./bootstrap-vcpkg.sh
+      - run: ./vcpkg install grpc
