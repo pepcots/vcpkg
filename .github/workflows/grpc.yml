@@ -1,0 +1,11 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  build-grpc:
+    name: build grpc
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./bootstrap-vcpkg.bat
+      - run: ./vcpkg.exe install grpc
